@@ -13,7 +13,7 @@
 %>
 <title><%=pageTitle%></title>
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-
+<link rel="stylesheet" href="resources/css/style.css">
 </head>
 
 <body ng-controller="fileUploadCtrl" nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
@@ -23,27 +23,20 @@
 		<jsp:include page="/WEB-INF/jsp/parts/menu-head.jsp" />
 
 		<div class="row">
-
-			<div class="col-md-3">
-
+		<div class="alert alert-danger" ng-show="uploadError!=null">{{uploadError}}</div>
+			<div class="col-md-4">
 				<h3>Depósito de archivos</h3>
-
-				<div ng-show="uploader.isHTML5">
+				<div ng-show="uploader.isHTML5" class="drop-zone">
 					<div class="well my-drop-zone" nv-file-over="" uploader="uploader">
-					</div>
-					
+					</div>					
 				</div>
-
-				<br/> 
-				
-				<input type="file" nv-file-select="" uploader="uploader" />
+				<br/> 				
+				<input type="file" nv-file-select="" uploader="uploader" class="btn btn-default"/>
 			</div>
-
-			<div class="col-md-9" style="margin-bottom: 40px">
-
+			<div class="col-md-8" style="margin-bottom: 40px">
 				<h3>Cola de Carga</h3>
 				<p>Tamaño: {{ uploader.queue.length }}</p>
-
+				
 				<table class="table">
 					<thead>
 						<tr>
@@ -66,6 +59,7 @@
 								ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span> <span ng-show="item.isError"><i
 									class="glyphicon glyphicon-remove"></i></span></td>
 							<td nowrap>
+							
 								<button type="button" class="btn btn-success btn-xs" ng-click="item.upload()"
 									ng-disabled="item.isReady || item.isUploading || item.isSuccess">
 									<span class="glyphicon glyphicon-upload"></span> Subir

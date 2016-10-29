@@ -1,10 +1,44 @@
 app.controller('fileUploadCtrl', ['$scope', '$http','FileUploader', function($scope, $http, FileUploader) {
-	$scope.uploader = new FileUploader();
+/* https://templth.wordpress.com/2014/11/25/implement-uploads-with-angular/*/
 	
-	var uploader = $scope.uploader = new FileUploader({
-//        url: 'upload.php'
+	 var uploader =  $scope.uploader = new FileUploader({
+		  removeAfterUpload: true,
+	      autoUpload: false,
+	      withCredentials: true,
+	      queueLimit: 1,
+	      url : '/api/upload'
+	      
     });
 	
+	$scope.upload = function () {
+	    $scope.uploader.uploadAll();
+	};
+	
+	$scope.uploader.onBeforeUploadItem = function (fileItem) {
+	    $scope.uploadError = null;
+	    //fileItem.url = '/api/upload.jsp';
+	};
+
+	$scope.uploader.onAfterAddingFile = function () {
+	    $scope.uploadError = null;
+	};
+
+	$scope.uploader.onErrorItem = function (fileItem) {
+	    $scope.uploadError = 'Error when uploading the file '+ fileItem.file.name + '.';
+	};
+
+	$scope.uploader.onSuccessItem = function () {
+	    // Example: close the current model dialog when the upload succeeds
+	    $modalInstance.dismiss();
+	    // Example: reload the current screen (using route) when the upload succeeds
+	    $route.reload();
+	};
+	
+	$scope.isUploading = function () {
+	    return !_.isEmpty($scope.uploader.queue);
+	};
+	
+
 	// FILTERS
     uploader.filters.push({
         name: 'customFilter',
@@ -12,7 +46,7 @@ app.controller('fileUploadCtrl', ['$scope', '$http','FileUploader', function($sc
             return this.queue.length < 10;
         }
     });
-    
+
     // CALLBACKS
     uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/ , filter, options) {
         console.info('onWhenAddingFileFailed', item, filter, options);

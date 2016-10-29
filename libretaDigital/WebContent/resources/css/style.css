@@ -1,8 +1,19 @@
 
 
+/* PAGINA */
+
+
+
+
+
+
+
+
+
 /* FILE UPLOAD ANGULAR */
 .my-drop-zone {
-	border: dotted 3px lightgray;
+	border: dotted 5px lightgray;
+	height: 100%
 }
 .nv-file-over {
 	border: dotted 3px red;
@@ -11,3 +22,6 @@
 	border: dotted 3px green;
 }
 
+.drop-zone{
+	height: 200px;
+}
