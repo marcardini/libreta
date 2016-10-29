@@ -26,7 +26,7 @@ var codMenu = "<%=codMenu%>";
 
 					<ul class="dropdown-menu">
 						<li class="{{datos1}}"><a href="fileUpload.jsp">Carga Masiva</a></li>
-						<li><a href="#">Docentes</a></li>
+						<li><a ng-click = "test()" >Docentes</a></li>
 						<li><a href="#">Alumnos</a></li>
 						<li><a href="#">Grupos</a></li>
 						<li><a href="#">Programa</a></li>

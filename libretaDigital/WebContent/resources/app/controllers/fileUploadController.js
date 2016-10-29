@@ -1,12 +1,24 @@
 app.controller('fileUploadCtrl', ['$scope', '$http','FileUploader', function($scope, $http, FileUploader) {
 /* https://templth.wordpress.com/2014/11/25/implement-uploads-with-angular/*/
 	
+	
+//	$scope.test = $http({
+//		  method: 'GET',
+//		  url: 'api/test'
+//		}).then(function successCallback(response) {
+//		    console.log(response)
+//		  }, function errorCallback(response) {
+//		    // called asynchronously if an error occurs
+//		    // or server returns response with an error status.
+//			  console.log(response)
+//		  });
+	
 	 var uploader =  $scope.uploader = new FileUploader({
 		  removeAfterUpload: true,
 	      autoUpload: false,
 	      withCredentials: true,
 	      queueLimit: 1,
-	      url : '/api/upload'
+	      url : 'api/upload'
 	      
     });
 	
