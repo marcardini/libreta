@@ -26,12 +26,13 @@ var codMenu = "<%=codMenu%>";
 
 					<ul class="dropdown-menu">
 						<li class="{{datos1}}"><a href="fileUpload.jsp">Carga Masiva</a></li>
-						<li><a ng-click = "test()" >Docentes</a></li>
+						<li><a href="#">Docentes</a></li>
 						<li><a href="#">Alumnos</a></li>
 						<li><a href="#">Grupos</a></li>
 						<li><a href="#">Programa</a></li>
 					</ul></li>
 				<li><a href="#">Control de asistencias</a></li>
+<!-- 				<li><button ng-click = "test()">Test</button></li> -->
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<!--         <li><a href="#"><span class="glyphicon glyphicon-user"></span>Registrarse</a></li> -->
